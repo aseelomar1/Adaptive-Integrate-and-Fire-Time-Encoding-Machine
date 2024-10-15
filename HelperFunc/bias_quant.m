@@ -6,7 +6,7 @@ function b_q = bias_quant(b, Delta,bmin,bmax)
     % Output:
     %   b_q: Quantized bias value
     
-    k = round(b / Delta + 0.5);  % Round to nearest quantized step
+    k = ceil((b-bmin) / Delta);  % Round to nearest quantized step
     b_q = k * Delta+bmin;  % Quantized bias
     b_q = min(b_q,bmax);
 end
